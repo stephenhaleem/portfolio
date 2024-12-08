@@ -41,6 +41,7 @@
     display: none;
   }
  .logo{
+    font-family: josefin sans;
     font-size: 3rem;
     color: white;
     font-weight: 800;
@@ -111,6 +112,7 @@ section{
     text-align: right;
 }
 .home-content h1{
+    font-family: josefin sans;
     font-size:6rem ;
     font-weight: 700;
     margin-top: 1.5rem;
@@ -242,7 +244,11 @@ section{
     color: black;
 }
 .services h2{
-    color: #fce443;
+    background: linear-gradient(270deg,
+                #fce443 10%,
+                #ff1d15 100%);
+        background-clip: text;
+        color: transparent;
     font-family: rock salt;
 }
 .services-container{
