@@ -7,11 +7,14 @@
   font-family: "arial";
 }
 :root {
-  --bg-color: #030201;
-  --second-bg-color: #101010;
   --text-color: white;
+  --bg-color: #030201;
   --main-color: #fce443;
+  --neon-cyan: #00f7ff;
+  --neon-magenta: #ff00ff;
+  --deep-purple: #1a0d2b;
 }
+
 html {
   font-size: 60%;
   overflow-x: hidden;
@@ -28,14 +31,29 @@ ul {
 a {
   text-decoration: none;
 }
-
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+body,
+header,
+section,
+footer,
+main {
+  position: relative;
+  z-index: 1;
+}
 .header {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   padding: 5px 14px;
-  background-color: black;
+  background-color: transparent;
   z-index: 1000;
 }
 .nav {
@@ -277,6 +295,7 @@ section {
   min-height: 100vh;
   padding: 10rem 15%;
 }
+
 .home {
   display: flex;
   align-items: center;
@@ -295,11 +314,13 @@ section {
   font-weight: 700;
   margin-top: 1.5rem;
   line-height: 1;
+  color: var(--text-color);
 }
 .home-content h3 {
   margin: 1rem 0;
   font-size: 3rem;
   font-family: rock salt;
+  color: var(--text-color);
 }
 .home-content p {
   font-family: josefin sans;
@@ -375,7 +396,7 @@ section {
   justify-content: center;
   align-items: center;
   gap: 10rem;
-  background: var(--bg-color);
+  background: transparent;
 }
 .about-img img {
   width: 32vw;
@@ -417,7 +438,7 @@ section {
   margin: 5rem 0;
 }
 .services {
-  background-color: var(--bg-color);
+  background-color: transparent;
   color: black;
 }
 .services h2 {
@@ -474,7 +495,7 @@ section {
 }
 
 .projects {
-  background-color: var(--bg-color);
+  background-color: transparent;
 }
 .projects-box {
   display: grid;
@@ -525,7 +546,7 @@ section {
   padding-top: 100px;
 }
 .contact {
-  background-color: var(--bg-color);
+  background-color: transparent;
 }
 .contact h2 {
   margin-bottom: 3rem;
@@ -553,7 +574,7 @@ section {
 }
 
 .footer {
-  background-color: var(--bg-color);
+  background-color: transparent;
   padding: 50px 0;
 }
 .footer .social-icons {
@@ -659,4 +680,102 @@ section {
   width: 100vw;
   position: fixed;
   z-index: 100;
+}
+
+/* Glitch Effect */
+.glitch {
+  position: relative;
+  font-family: "Rubik Glitch", sans-serif; /* Optional, if imported */
+  color: var(--main-color); /* #fce443 for "Eniola" */
+  font-weight: 700;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.glitch::before {
+  color: var(--neon-cyan); /* #00f7ff */
+  animation: glitch-top 1s infinite linear alternate-reverse; /* Always running */
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+.glitch::after {
+  color: var(--neon-magenta); /* #ff00ff */
+  animation: glitch-bottom 1.5s infinite linear alternate-reverse; /* Always running */
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+/* Enhance on hover (optional) */
+.glitch:hover::before {
+  animation: glitch-top 0.5s infinite linear alternate-reverse; /* Faster on hover */
+}
+
+.glitch:hover::after {
+  animation: glitch-bottom 0.7s infinite linear alternate-reverse; /* Faster on hover */
+}
+
+/* Ensure glitch span integrates correctly */
+.home-content h1 .glitch {
+  font-size: inherit; /* Matches h1's 6rem */
+  color: var(--main-color); /* #fce443 base for "Eniola" */
+  background: none; /* No gradient */
+}
+
+/* Keep "Web Developer" gradient intact */
+.home-content h3 span {
+  font-family: "Rock Salt", cursive;
+  background: linear-gradient(270deg, #fce443 10%, #ff1d15 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glitch Keyframes */
+@keyframes glitch-top {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3px, 1px);
+  }
+  40% {
+    transform: translate(3px, -1px);
+  }
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes glitch-bottom {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(2px, -1px);
+  }
+  40% {
+    transform: translate(-2px, 1px);
+  }
+  60% {
+    transform: translate(3px, -2px);
+  }
+  80% {
+    transform: translate(-3px, 2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
